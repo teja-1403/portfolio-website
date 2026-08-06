@@ -43,7 +43,7 @@ export default function Portfolio() {
               </span>
             </h1>
             <p className="text-xl text-zinc-400 max-w-[600px]">
-              I craft exceptional digital experiences with code, creativity, and a passion for innovation.
+              I build scalable web applications with a strong focus on impact and user experience.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Button className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0">
@@ -53,10 +53,11 @@ export default function Portfolio() {
                 <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
               </Button>
               <Button
+                asChild
                 variant="outline"
                 className="border-zinc-700 text-pink-500 hover:text-pink-700 hover:border-zinc-500"
               >
-                Contact Me
+                <Link href="#contact">Contact Me</Link>
               </Button>
             </div>
             <div className="flex gap-4 pt-4">
@@ -136,17 +137,13 @@ export default function Portfolio() {
             <div className="space-y-6">
               <GlassmorphicCard>
                 <p className="text-lg text-zinc-300">
-                  I'm a passionate software engineer with experience building web applications and digital products. I
-                  specialize in frontend development with React and Next.js, but I'm also comfortable working with
-                  backend technologies.
+                  I’m a software developer with hands-on experience building scalable, production-ready applications and contributing across the full development lifecycle.
                 </p>
                 <p className="text-lg text-zinc-300 mt-4">
-                  My journey in tech started with a strong foundation in software development. I've worked with various
-                  companies to create intuitive, performant, and accessible digital experiences.
+                  My background spans Java full-stack development, React-based frontend work, and Agile collaboration in environments that value reliability and impact.
                 </p>
                 <p className="text-lg text-zinc-300 mt-4">
-                  When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
-                  and staying up-to-date with the latest industry trends.
+                  I’m especially interested in building practical, user-focused solutions and continuously growing as a developer.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
