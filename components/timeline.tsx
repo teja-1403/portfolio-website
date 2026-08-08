@@ -1,40 +1,36 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useMobile } from "@/hooks/use-mobile"
+import { motion } from "framer-motion";
+import { useMobile } from "@/hooks/use-mobile";
 
 const experiences = [
   {
-    title: "Senior Frontend Engineer",
-    company: "Tech Innovations Inc.",
-    period: "2021 - Present",
-    description:
-      "Lead the frontend development team in building a SaaS platform. Implemented new features, improved performance, and mentored junior developers.",
+    title: "Technology Apprentice",
+    company: "Standard Chartered GBS",
+    period: "Jul 2025 – Jul 2026 | Chennai, India",
+    description: [
+      "Built the Exception Dashboard (ED) using React (TypeScript) and Spring Boot for real-time trade monitoring across multiple systems.",
+      "Developed the Corporate Actions (CA) Dashboard with 12+ search filters and scalable backend APIs processing 10k+ records/day for 600+ users across 28+ countries.",
+      "Automated end-to-end testing with Selenium and maintained Jest/JUnit tests with SonarQube, achieving 85%+ CI/CD test coverage and near-zero post-production defects.",
+      "Contributed to AWS infrastructure provisioning for the India Gold Custody deployment using Terraform and Azure DevOps pipelines (EC2, Aurora PostgreSQL, ELB, SC FileIT).",
+      "Validated SQL data integrity, resolving synchronization issues between upstream and downstream systems to ensure reliable application data.",
+    ],
   },
   {
-    title: "Frontend Developer",
-    company: "Digital Solutions Co.",
-    period: "2019 - 2021",
-    description:
-      "Developed responsive web applications using React and TypeScript. Collaborated with designers and backend engineers to deliver high-quality products.",
+    title: "Machine Learning Intern",
+    company: "Indira Gandhi Centre for Atomic Research (IGCAR)",
+    period: "Sep 2023 - Oct 2023 | Chennai, Tamil Nadu, India",
+    description: [
+      "Conducted research on applying machine learning algorithms for breast cancer detection.",
+      "Improved data preprocessing techniques by 20%, enhancing model accuracy.",
+      "Developed and deployed predictive models using Python, Scikit-learn, and Streamlit.",
+      "Collaborated with domain experts to interpret results for early cancer detection.",
+    ],
   },
-  {
-    title: "Web Developer",
-    company: "Creative Agency",
-    period: "2017 - 2019",
-    description:
-      "Built websites and web applications for various clients. Worked with HTML, CSS, JavaScript, and WordPress.",
-  },
-  {
-    title: "Intern",
-    company: "Startup Hub",
-    period: "2016 - 2017",
-    description: "Assisted in developing web applications and learned modern web development practices.",
-  },
-]
+];
 
 export function Timeline() {
-  const isMobile = useMobile()
+  const isMobile = useMobile();
 
   return (
     <div
@@ -64,7 +60,14 @@ export function Timeline() {
                 <div className="text-zinc-400 mb-4">
                   {experience.company} | {experience.period}
                 </div>
-                <p className="text-zinc-300">{experience.description}</p>
+                <ul className="space-y-3 text-zinc-300">
+                  {experience.description.map((item, itemIndex) => (
+                    <li key={itemIndex} className="flex gap-3">
+                      <span className="mt-1 h-2 w-2 rounded-full bg-purple-500 flex-shrink-0"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </motion.div>
@@ -85,5 +88,5 @@ export function Timeline() {
         </div>
       ))}
     </div>
-  )
+  );
 }

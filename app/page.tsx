@@ -1,17 +1,48 @@
-import Link from "next/link"
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
+import type { SVGProps } from "react";
+import Link from "next/link";
+import { ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { ProjectCard } from "@/components/project-card"
-import { SkillBadge } from "@/components/skill-badge"
-import { Timeline } from "@/components/timeline"
-import { ContactForm } from "@/components/contact-form"
-import { CreativeHero } from "@/components/creative-hero"
-import { FloatingNav } from "@/components/floating-nav"
-import { MouseFollower } from "@/components/mouse-follower"
-import { ScrollProgress } from "@/components/scroll-progress"
-import { SectionHeading } from "@/components/section-heading"
-import { GlassmorphicCard } from "@/components/glassmorphic-card"
+import { Button } from "@/components/ui/button";
+import { ProjectCard } from "@/components/project-card";
+import { SkillBadge } from "@/components/skill-badge";
+import { Timeline } from "@/components/timeline";
+import { ContactForm } from "@/components/contact-form";
+import { CreativeHero } from "@/components/creative-hero";
+import { FloatingNav } from "@/components/floating-nav";
+import { MouseFollower } from "@/components/mouse-follower";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { SectionHeading } from "@/components/section-heading";
+import { GlassmorphicCard } from "@/components/glassmorphic-card";
+
+function MediumIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M4 6h3.2l4.8 8 4.8-8H21v12h-3.2v-8.8l-4.8 8.4-4.8-8.4V18H4V6Z" />
+    </svg>
+  );
+}
+
+function LinktreeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <circle cx="12" cy="6" r="3" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="18" r="3" />
+      <path d="M12 9v3.5" />
+      <path d="M8.5 15.5L12 12" />
+      <path d="M15.5 15.5L12 12" />
+    </svg>
+  );
+}
 
 export default function Portfolio() {
   return (
@@ -43,14 +74,21 @@ export default function Portfolio() {
               </span>
             </h1>
             <p className="text-xl text-zinc-400 max-w-[600px]">
-              I build scalable web applications with a strong focus on impact and user experience.
+              I build scalable, enterprise-grade web applications with React and
+              Spring Boot.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0">
-                <span className="relative z-10 flex items-center">
-                  View Projects <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <Button
+                asChild
+                className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0"
+              >
+                <Link
+                  href="#projects"
+                  className="relative z-10 flex items-center"
+                >
+                  View Projects{" "}
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
               <Button
                 asChild
@@ -61,7 +99,25 @@ export default function Portfolio() {
               </Button>
             </div>
             <div className="flex gap-4 pt-4">
-              <Link href="https://github.com/teja-1403" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://www.linkedin.com/in/saiteja1403/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">LinkedIn</span>
+                </Button>
+              </Link>
+              <Link
+                href="https://github.com/teja-1403"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button
                   variant="ghost"
                   size="icon"
@@ -71,16 +127,34 @@ export default function Portfolio() {
                   <span className="sr-only">GitHub</span>
                 </Button>
               </Link>
-              <Link href="https://www.linkedin.com/in/saiteja1403/" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://medium.com/@teja1403"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button
                   variant="ghost"
                   size="icon"
                   className="rounded-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white"
                 >
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
+                  <MediumIcon className="h-5 w-5" />
+                  <span className="sr-only">Medium</span>
                 </Button>
-              </Link>             
+              </Link>
+              <Link
+                href="https://linktr.ee/teja1403"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+                >
+                  <LinktreeIcon className="h-5 w-5" />
+                  <span className="sr-only">Linktree</span>
+                </Button>
+              </Link>
               <Link href="mailto:tejathelegend7@gmail.com">
                 <Button
                   variant="ghost"
@@ -113,7 +187,10 @@ export default function Portfolio() {
         </div>
 
         <div className="container relative z-10">
-          <SectionHeading title="About Me" subtitle="My background and journey" />
+          <SectionHeading
+            title="About Me"
+            subtitle="My background and journey"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
             <div className="relative">
@@ -128,7 +205,9 @@ export default function Portfolio() {
                 <div className="absolute bottom-0 left-0 w-full p-6">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-sm font-medium">Available for work</span>
+                    <span className="text-sm font-medium">
+                      Available for work
+                    </span>
                   </div>
                 </div>
               </div>
@@ -137,19 +216,24 @@ export default function Portfolio() {
             <div className="space-y-6">
               <GlassmorphicCard>
                 <p className="text-lg text-zinc-300">
-                  I’m a software developer with hands-on experience building scalable, production-ready applications and contributing across the full development lifecycle.
+                  I’m a software developer with hands-on experience building
+                  scalable, production-ready applications and contributing
+                  across the full development lifecycle.
                 </p>
                 <p className="text-lg text-zinc-300 mt-4">
-                  My background spans Java full-stack development, React-based frontend work, and Agile collaboration in environments that value reliability and impact.
+                  My background spans Java full-stack development, React-based
+                  frontend work, and Agile collaboration in environments that
+                  value reliability and impact.
                 </p>
                 <p className="text-lg text-zinc-300 mt-4">
-                  I’m especially interested in building practical, user-focused solutions and continuously growing as a developer.
+                  I’m especially interested in building practical, user-focused
+                  solutions and continuously growing as a developer.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Name</div>
-                    <div className="font-medium">Sai Teja</div>
+                    <div className="font-medium">Sai Teja T B V</div>
                   </div>
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Email</div>
@@ -161,12 +245,21 @@ export default function Portfolio() {
                   </div>
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Availability</div>
-                    <div className="font-medium text-green-500">Open to opportunities</div>
+                    <div className="font-medium text-green-500">
+                      Open to opportunities
+                    </div>
                   </div>
                 </div>
 
                 <div className="mt-8">
-                  <Button className="bg-zinc-800 hover:bg-zinc-700 text-white">Download Resume</Button>
+                  <Button
+                    asChild
+                    className="bg-zinc-800 hover:bg-zinc-700 text-white"
+                  >
+                    <a href="/resume.pdf" download>
+                      Download Resume
+                    </a>
+                  </Button>
                 </div>
               </GlassmorphicCard>
             </div>
@@ -182,21 +275,34 @@ export default function Portfolio() {
         </div>
 
         <div className="container relative z-10">
-          <SectionHeading title="My Skills" subtitle="Technologies I work with" />
+          <SectionHeading
+            title="My Skills"
+            subtitle="Technologies I work with"
+          />
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-16">
-            <SkillBadge name="JavaScript" level={90} />
-            <SkillBadge name="TypeScript" level={85} />
-            <SkillBadge name="React" level={95} />
-            <SkillBadge name="Next.js" level={90} />
-            <SkillBadge name="Node.js" level={80} />
-            <SkillBadge name="HTML/CSS" level={95} />
-            <SkillBadge name="Tailwind CSS" level={90} />
-            <SkillBadge name="GraphQL" level={75} />
-            <SkillBadge name="PostgreSQL" level={70} />
-            <SkillBadge name="AWS" level={65} />
-            <SkillBadge name="Docker" level={60} />
-            <SkillBadge name="Git" level={85} />
+            <SkillBadge name="Java" level={90} />
+            <SkillBadge name="Spring Boot" level={88} />
+            <SkillBadge name="React.js" level={88} />
+            <SkillBadge name="TypeScript" level={90} />
+            <SkillBadge name="JavaScript" level={85} />
+            <SkillBadge name="HTML/CSS" level={85} />
+            <SkillBadge name="Python" level={85} />
+            <SkillBadge name="SQL" level={88} />
+            <SkillBadge name="PostgreSQL" level={85} />
+            <SkillBadge name="Git & GitHub" level={92} />
+            <SkillBadge name="Azure DevOps" level={85} />
+            <SkillBadge name="AWS" level={75} />
+            <SkillBadge name="CI/CD" level={82} />
+            <SkillBadge name="Selenium" level={80} />
+            <SkillBadge name="Postman" level={82} />
+            <SkillBadge name="OOP" level={90} />
+            <SkillBadge name="Data Structures & Algorithms" level={91} />
+            <SkillBadge name="Agile SDLC" level={87} />
+            <SkillBadge name="Machine Learning" level={82} />
+            <SkillBadge name="Deep Learning" level={78} />
+            <SkillBadge name="NLP" level={80} />
+            <SkillBadge name="EDA" level={80} />
           </div>
         </div>
       </section>
@@ -209,7 +315,10 @@ export default function Portfolio() {
         </div>
 
         <div className="container relative z-10">
-          <SectionHeading title="Featured Projects" subtitle="Some of my recent work" />
+          <SectionHeading
+            title="Featured Projects"
+            subtitle="Some of my recent work"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             <ProjectCard
@@ -272,7 +381,10 @@ export default function Portfolio() {
         </div>
 
         <div className="container relative z-10">
-          <SectionHeading title="Work Experience" subtitle="My professional journey" />
+          <SectionHeading
+            title="Work Experience"
+            subtitle="My professional journey"
+          />
 
           <div className="mt-16">
             <Timeline />
@@ -305,11 +417,22 @@ export default function Portfolio() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
+                    <Phone className="h-5 w-5 text-purple-400" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-zinc-500">Phone</div>
+                    <div className="font-medium">+91 93633 31206</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Linkedin className="h-5 w-5 text-purple-400" />
                   </div>
                   <div>
                     <div className="text-sm text-zinc-500">LinkedIn</div>
-                    <div className="font-medium">linkedin.com/in/saiteja1403</div>
+                    <div className="font-medium">
+                      linkedin.com/in/saiteja1403
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -327,7 +450,7 @@ export default function Portfolio() {
                 <h4 className="text-lg font-medium mb-4">Current Status</h4>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                  <span>Available for freelance work and full-time opportunities</span>
+                  <span>Available for full-time Software Engineer roles</span>
                 </div>
               </div>
             </GlassmorphicCard>
@@ -342,7 +465,9 @@ export default function Portfolio() {
         <div className="container flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <Link href="/" className="font-bold text-xl">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">S</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                S
+              </span>
               <span className="text-white">T</span>
             </Link>
             <p className="text-sm text-zinc-500 mt-2">
@@ -350,7 +475,25 @@ export default function Portfolio() {
             </p>
           </div>
           <div className="flex gap-4">
-            <Link href="https://github.com/teja-1403" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://www.linkedin.com/in/saiteja1403/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+              >
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
+              </Button>
+            </Link>
+            <Link
+              href="https://github.com/teja-1403"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="ghost"
                 size="icon"
@@ -360,14 +503,32 @@ export default function Portfolio() {
                 <span className="sr-only">GitHub</span>
               </Button>
             </Link>
-            <Link href="https://www.linkedin.com/in/saiteja1403/" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://medium.com/@teja1403"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="ghost"
                 size="icon"
                 className="rounded-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white"
               >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+                <MediumIcon className="h-5 w-5" />
+                <span className="sr-only">Medium</span>
+              </Button>
+            </Link>
+            <Link
+              href="https://linktr.ee/teja1403"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+              >
+                <LinktreeIcon className="h-5 w-5" />
+                <span className="sr-only">Linktree</span>
               </Button>
             </Link>
             <Link href="mailto:tejathelegend7@gmail.com">
@@ -384,5 +545,5 @@ export default function Portfolio() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
