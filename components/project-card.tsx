@@ -1,24 +1,37 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { ArrowUpRight, Github } from "lucide-react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import Link from "next/link";
+import { ArrowUpRight, BookOpen, Github } from "lucide-react";
+import { motion } from "framer-motion";
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 interface ProjectCardProps {
-  title: string
-  description: string
-  tags: string[]
-  image: string
-  demoUrl: string
-  repoUrl: string
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+  demoUrl?: string;
+  repoUrl: string;
+  primaryLabel?: string;
+  primaryIcon?: "book" | "github";
+  primaryUrl?: string;
 }
 
-export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl }: ProjectCardProps) {
-  const [isHovered, setIsHovered] = useState(false)
+export function ProjectCard({
+  title,
+  description,
+  tags,
+  image,
+  demoUrl,
+  repoUrl,
+  primaryLabel = "Code",
+  primaryIcon = "github",
+  primaryUrl,
+}: ProjectCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -51,29 +64,52 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
 
             <div className="flex flex-wrap gap-2 mb-6">
               {tags.map((tag, index) => (
-                <Badge key={index} variant="secondary" className="bg-zinc-700/50 hover:bg-zinc-700 text-zinc-300">
+                <Badge
+                  key={index}
+                  variant="secondary"
+                  className="bg-zinc-700/50 hover:bg-zinc-700 text-zinc-300"
+                >
                   {tag}
                 </Badge>
               ))}
             </div>
 
             <div className="flex justify-between mt-auto pt-4 border-t border-zinc-700/50">
-              <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-white hover:bg-zinc-700/50" asChild>
-                <Link href={repoUrl} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
-                  Code
-                </Link>
-              </Button>
               <Button
+                variant="ghost"
                 size="sm"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+                className="text-zinc-400 hover:text-white hover:bg-zinc-700/50"
                 asChild
               >
-                <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                  <ArrowUpRight className="ml-2 h-4 w-4" />
+                <Link
+                  href={primaryUrl ?? repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {primaryIcon === "book" ? (
+                    <BookOpen className="mr-2 h-4 w-4" />
+                  ) : (
+                    <Github className="mr-2 h-4 w-4" />
+                  )}
+                  {primaryLabel}
                 </Link>
               </Button>
+              {demoUrl && (
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+                  asChild
+                >
+                  <Link
+                    href={demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live Demo
+                    <ArrowUpRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
 
@@ -85,5 +121,5 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

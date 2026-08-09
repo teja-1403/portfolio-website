@@ -1,6 +1,13 @@
 import type { SVGProps } from "react";
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/project-card";
@@ -197,7 +204,7 @@ export default function Portfolio() {
               <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-xl opacity-70"></div>
               <div className="relative aspect-square rounded-xl overflow-hidden border border-zinc-800">
                 <img
-                  src="/placeholder.svg?height=600&width=600"
+                  src="/images/aboutme.png"
                   alt="Sai Teja"
                   className="w-full h-full object-cover"
                 />
@@ -228,6 +235,10 @@ export default function Portfolio() {
                 <p className="text-lg text-zinc-300 mt-4">
                   I’m especially interested in building practical, user-focused
                   solutions and continuously growing as a developer.
+                </p>
+                <p className="text-lg text-zinc-300 mt-4">
+                  Beyond coding, I’m passionate about weighted calisthenics,
+                  community building, and documenting my learning journey.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
@@ -263,6 +274,86 @@ export default function Portfolio() {
                 </div>
               </GlassmorphicCard>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Medium posts Section */}
+      <section id="medium-posts" className="py-32 relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        </div>
+
+        <div className="container relative z-10">
+          <SectionHeading
+            title="Featured Articles"
+            subtitle="Some of my recent posts"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            <ProjectCard
+              title="Master Sliding Window with my Practice Sheet 🚀"
+              description="A practical guide to mastering Sliding Window patterns with LeetCode problems and a curated practice sheet."
+              tags={[
+                "Data Structures",
+                "Sliding Window Algorithm",
+                "Programming",
+                "LeetCode",
+              ]}
+              image="/images/post1.png"
+              repoUrl="https://medium.com/@teja1403/master-sliding-window-with-my-practice-sheet-2e5186acfe99"
+              primaryLabel="Read"
+              primaryIcon="book"
+            />
+            <ProjectCard
+              title="What 700+ LeetCode Problems Taught Me: Honest Reflections & Advice 😮‍💨"
+              description="Lessons from 700+ LeetCode problems on DSA, problem-solving, consistency, AI, and interview preparation."
+              tags={["LeetCode", "Programming", "Data Structures", "Coding"]}
+              image="/images/post2.png"
+              repoUrl="https://medium.com/@teja1403/what-600-leetcode-problems-taught-me-honest-reflections-advice-3122deb44b42"
+              primaryLabel="Read"
+              primaryIcon="book"
+            />
+            <ProjectCard
+              title="Why Programming Uses Single Quotes for Characters and Double Quotes for Strings?"
+              description="An easy explanation of characters vs. strings, covering quotes, types, compiler clarity, and history."
+              tags={["Character", "String", "Programming", "Syntax", "Coding"]}
+              image="/images/post3.png"
+              repoUrl="https://medium.com/@teja1403/why-programming-uses-single-quotes-for-characters-and-double-quotes-for-strings-5482432ede44"
+              primaryLabel="Read"
+              primaryIcon="book"
+            />
+            <ProjectCard
+              title="How to Start a Journaling Habit You’ll Actually Stick To"
+              description="A simple journaling system using monthly goals, daily highlights, habit tracking, and reflection."
+              tags={[
+                "Journaling",
+                "Self Improvement",
+                "Habits",
+                "Productivity",
+                "Daily Life",
+              ]}
+              image="/images/post4.png"
+              repoUrl="https://medium.com/@teja1403/how-to-start-a-journaling-habit-youll-actually-stick-to-f38c560d629c"
+              primaryLabel="Read"
+              primaryIcon="book"
+            />
+            <ProjectCard
+              title="Why Are Sorting Algorithms Still Asked in Interviews?"
+              description="Why sorting algorithms remain common in interviews and what they reveal about problem-solving and optimization."
+              tags={[
+                "Sorting Algorithms",
+                "Interview Tips",
+                "Interview",
+                "Data Structures",
+                "Quick Sort",
+              ]}
+              image="/images/post5.png"
+              repoUrl="https://medium.com/@teja1403/why-are-sorting-algorithms-still-asked-in-interviews-9178beb8ac05"
+              primaryLabel="Read"
+              primaryIcon="book"
+            />
           </div>
         </div>
       </section>
@@ -322,52 +413,40 @@ export default function Portfolio() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             <ProjectCard
-              title="E-commerce Platform"
-              description="A full-stack e-commerce platform built with Next.js, Stripe, and Prisma."
-              tags={["Next.js", "TypeScript", "Prisma", "Stripe"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="Task Management App"
-              description="A collaborative task management application with real-time updates."
-              tags={["React", "Firebase", "Tailwind CSS", "Redux"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="AI Content Generator"
-              description="An AI-powered content generation tool using OpenAI's GPT models."
-              tags={["Next.js", "OpenAI API", "Node.js", "MongoDB"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="Fitness Tracker"
-              description="A mobile-first fitness tracking application with data visualization."
-              tags={["React Native", "TypeScript", "D3.js", "Firebase"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="Weather Dashboard"
-              description="A beautiful weather dashboard with forecasts and historical data."
-              tags={["React", "Weather API", "Chart.js", "Styled Components"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="Portfolio Website"
-              description="This portfolio website built with Next.js and Tailwind CSS."
+              title="Personal Portfolio Website"
+              description="A responsive developer portfolio showcasing my skills, projects, experience, and learning journey."
               tags={["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
+              image="/images/project1.png"
+              demoUrl="https://github.com/teja-1403/portfolio-website"
+              repoUrl="https://github.com/teja-1403/portfolio-website"
+            />
+            <ProjectCard
+              title="Breast Cancer Detection using Machine Learning"
+              description="A machine learning system for classifying breast thermal images as Benign, Malignant, or Normal."
+              tags={["Python", "Scikit-learn", "Machine Learning", "OpenCV"]}
+              image="/images/project2.png"
+              repoUrl="https://github.com/teja-1403/Breast-Cancer-Detection-using-Python"
+            />
+            <ProjectCard
+              title="Multilingual Translation using NLP"
+              description="A context-aware translation system for Indian languages using deep learning and speech technologies."
+              tags={["Python", "NLP", "Deep Learning", "BERT"]}
+              image="/images/project3.png"
+              repoUrl="https://github.com/teja-1403/Multilingual-Translation-NLP"
+            />
+            <ProjectCard
+              title="Cervical Cancer Detection using Deep Learning"
+              description="A deep learning system for multiclass cervical cell classification using image segmentation and computer vision."
+              tags={["Python", "TensorFlow", "Keras", "Computer Vision"]}
+              image="/images/project4.png"
+              repoUrl="https://github.com/teja-1403/Cervical_Cancer-Detection-using-Python"
+            />
+            <ProjectCard
+              title="News Article Summarization"
+              description="A comparative NLP project evaluating PEGASUS and BART for automated news article summarization."
+              tags={["Python", "NLP", "PEGASUS", "BART"]}
+              image="/images/project5.png"
+              repoUrl="https://github.com/teja-1403/TextSummarization-Using-PEGASUS-BART"
             />
           </div>
         </div>
