@@ -4,9 +4,6 @@ A modern and responsive creative portfolio built using [v0.dev](https://v0.dev) 
 
 ![Creative Portfolio Preview](./preview.png)
 
-## Live Demo
-
-Check out the live demo: [https://v0-creative-portfolio-o7.vercel.app/](https://v0-creative-portfolio-o7.vercel.app/)
 
 ## Features
 
@@ -28,10 +25,10 @@ Check out the live demo: [https://v0-creative-portfolio-o7.vercel.app/](https://
 
 To run this project locally, follow these steps:
 
-<!-- 1. Clone the repository:
+1. Clone the repository:
    \`\`\`bash
-   git clone https://github.com/shinekyaw/Creative-Portfolio.git
-   \`\`\` -->
+   git clone https://github.com/teja-1403/portfolio-website.git
+   \`\`\`
 
 2. Navigate to the project directory:
    \`\`\`bash
@@ -48,7 +45,7 @@ To run this project locally, follow these steps:
    npm run dev
    \`\`\`
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the portfolio.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view my portfolio.
 
 ## Customization
 
