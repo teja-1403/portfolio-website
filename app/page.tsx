@@ -262,13 +262,26 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-8 flex flex-wrap gap-3">
                   <Button
                     asChild
-                    className="bg-zinc-800 hover:bg-zinc-700 text-white"
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
                   >
                     <a href="/resume.pdf" download>
                       Download Resume
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-zinc-700 text-pink-500 hover:text-pink-700 hover:border-zinc-500"
+                  >
+                    <a
+                      href="https://flowcv.com/resume-template/69f1a3dbd09e8d4131574c52"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Get my resume template
                     </a>
                   </Button>
                 </div>
