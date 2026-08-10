@@ -20,6 +20,7 @@ import { MouseFollower } from "@/components/mouse-follower";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { SectionHeading } from "@/components/section-heading";
 import { GlassmorphicCard } from "@/components/glassmorphic-card";
+import PortfolioStats from "@/components/portfolio-stats";
 
 function MediumIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -636,6 +637,9 @@ export default function Portfolio() {
           </div>
         </div>
       </footer>
+
+      {/* Public Portfolio Analytics */}
+      <PortfolioStats />
     </div>
   );
 }
