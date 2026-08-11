@@ -76,7 +76,7 @@ export default function PortfolioStats() {
       <button
         type="button"
         onClick={openStats}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/90 px-4 py-3 text-sm font-medium text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:border-zinc-500 hover:bg-zinc-800"
+        className="fixed bottom-4 right-4 z-40 flex w-auto min-w-max items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/90 px-4 py-3 text-sm font-medium text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:border-zinc-500 hover:bg-zinc-800 sm:bottom-6 sm:right-6"
         aria-label="View portfolio statistics"
       >
         <BarChart3 className="h-4 w-4" />
@@ -91,7 +91,7 @@ export default function PortfolioStats() {
           role="presentation"
         >
           <div
-            className="relative w-full max-w-md rounded-2xl border border-zinc-700 bg-zinc-900 p-6 text-white shadow-2xl"
+            className="relative w-full max-w-md rounded-2xl border border-zinc-700 bg-zinc-900 p-6 text-white shadow-2xl max-h-[calc(100vh-2rem)] overflow-y-auto sm:max-w-lg"
             onClick={(event) => event.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -161,7 +161,7 @@ export default function PortfolioStats() {
             {/* Analytics Data */}
             {analytics && !loading && !error && (
               <>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {/* Visitors */}
                   <div className="rounded-xl border border-zinc-700 bg-zinc-800/50 p-5 text-center">
                     <Users className="mx-auto mb-3 h-6 w-6 text-purple-400" />

@@ -4,10 +4,26 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
 export function MouseFollower() {
+  const [isSupported, setIsSupported] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
+    const updateSupport = () => setIsSupported(mediaQuery.matches)
+
+    updateSupport()
+    mediaQuery.addEventListener("change", updateSupport)
+
+    return () => mediaQuery.removeEventListener("change", updateSupport)
+  }, [])
+
+  useEffect(() => {
+    if (!isSupported) {
+      setIsVisible(false)
+      return
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
       setIsVisible(true)
@@ -24,7 +40,11 @@ export function MouseFollower() {
       window.removeEventListener("mousemove", handleMouseMove)
       document.body.removeEventListener("mouseleave", handleMouseLeave)
     }
-  }, [])
+  }, [isSupported])
+
+  if (!isSupported) {
+    return null
+  }
 
   return (
     <>
