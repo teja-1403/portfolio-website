@@ -14,8 +14,13 @@ export function CreativeHero() {
     if (!ctx) return
 
     let devicePixelRatio: number
+    let mouseX = 0
+    let mouseY = 0
+    let targetX = 0
+    let targetY = 0
+    let supportsFinePointer = true
+    let pointerActive = false
 
-    // Set canvas dimensions
     const setCanvasDimensions = () => {
       devicePixelRatio = window.devicePixelRatio || 1
       const rect = canvas.getBoundingClientRect()
@@ -23,23 +28,75 @@ export function CreativeHero() {
       canvas.width = rect.width * devicePixelRatio
       canvas.height = rect.height * devicePixelRatio
 
-      ctx.scale(devicePixelRatio, devicePixelRatio)
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0)
     }
 
+    const updatePointerSupport = () => {
+      supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches
+      pointerActive = supportsFinePointer
+      if (supportsFinePointer) {
+        const rect = canvas.getBoundingClientRect()
+        targetX = rect.width / 2
+        targetY = rect.height / 2
+      }
+    }
+
+    updatePointerSupport()
     setCanvasDimensions()
-    window.addEventListener("resize", setCanvasDimensions)
+    const handleResize = () => {
+      updatePointerSupport()
+      setCanvasDimensions()
+    }
+    window.addEventListener("resize", handleResize)
 
-    // Mouse position
-    let mouseX = 0
-    let mouseY = 0
-    let targetX = 0
-    let targetY = 0
-
-    window.addEventListener("mousemove", (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
       targetX = e.clientX - rect.left
       targetY = e.clientY - rect.top
-    })
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      const touch = e.touches[0]
+      if (touch) {
+        targetX = touch.clientX - rect.left
+        targetY = touch.clientY - rect.top
+      }
+    }
+
+    const handleTouchStart = (e: TouchEvent) => {
+      pointerActive = true
+      handleTouchMove(e)
+    }
+
+    const handleTouchEnd = () => {
+      pointerActive = false
+      const rect = canvas.getBoundingClientRect()
+      targetX = rect.width / 2
+      targetY = rect.height / 2
+      mouseX = targetX
+      mouseY = targetY
+    }
+
+    if (supportsFinePointer) {
+      window.addEventListener("mousemove", handleMouseMove)
+    } else {
+      canvas.addEventListener("touchstart", handleTouchStart, { passive: true })
+      canvas.addEventListener("touchmove", handleTouchMove, { passive: true })
+      canvas.addEventListener("touchend", handleTouchEnd)
+      canvas.addEventListener("touchcancel", handleTouchEnd)
+    }
+
+    const defaultCenter = () => {
+      const rect = canvas.getBoundingClientRect()
+      targetX = rect.width / 2
+      targetY = rect.height / 2
+    }
+
+    if (!supportsFinePointer) {
+      pointerActive = false
+      defaultCenter()
+    }
 
     // Particle class
     class Particle {
@@ -67,7 +124,19 @@ export function CreativeHero() {
       }
 
       update() {
-        // Calculate distance between mouse and particle
+        if (!pointerActive && !supportsFinePointer) {
+          if (this.x !== this.baseX) {
+            const dx = this.x - this.baseX
+            this.x -= dx / 10
+          }
+          if (this.y !== this.baseY) {
+            const dy = this.y - this.baseY
+            this.y -= dy / 10
+          }
+          return
+        }
+
+        // Calculate distance between mouse/touch and particle
         const dx = mouseX - this.x
         const dy = mouseY - this.y
         this.distance = Math.sqrt(dx * dx + dy * dy)
@@ -134,6 +203,12 @@ export function CreativeHero() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+      if (!pointerActive && !supportsFinePointer) {
+        const rect = canvas.getBoundingClientRect()
+        targetX = rect.width / 2
+        targetY = rect.height / 2
+      }
+
       // Smooth mouse following
       mouseX += (targetX - mouseX) * 0.1
       mouseY += (targetY - mouseY) * 0.1
@@ -166,17 +241,25 @@ export function CreativeHero() {
     animate()
 
     // Handle window resize
-    window.addEventListener("resize", init)
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener("resize", setCanvasDimensions)
-      window.removeEventListener("resize", init)
+      window.removeEventListener("resize", handleResize)
+
+      if (supportsFinePointer) {
+        window.removeEventListener("mousemove", handleMouseMove)
+      } else {
+        canvas.removeEventListener("touchstart", handleTouchStart)
+        canvas.removeEventListener("touchmove", handleTouchMove)
+        canvas.removeEventListener("touchend", handleTouchEnd)
+        canvas.removeEventListener("touchcancel", handleTouchEnd)
+      }
     }
   }, [])
 
   return (
     <motion.div
-      className="w-full h-[400px] md:h-[500px] relative"
+      className="hidden md:block w-full h-[400px] md:h-[500px] relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

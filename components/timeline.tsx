@@ -43,7 +43,7 @@ export function Timeline() {
       {experiences.map((experience, index) => (
         <div
           key={index}
-          className={`relative z-10 flex items-center ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"}`}
+          className={`relative z-10 flex flex-col items-stretch gap-6 md:items-center ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"}`}
         >
           <motion.div
             className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}

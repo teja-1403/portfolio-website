@@ -15,16 +15,13 @@ export function FloatingNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 100 || isMobile);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobile]);
 
   const navItems = [
     { name: "About", href: "#about" },
@@ -43,7 +40,7 @@ export function FloatingNav() {
   return (
     <>
       <motion.div
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed top-6 z-50 ${isMobile ? "right-4 left-auto translate-x-0" : "left-1/2 -translate-x-1/2"} ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         initial={{ y: -100 }}
         animate={{ y: isVisible ? 0 : -100 }}
         transition={{ duration: 0.3 }}
@@ -63,6 +60,8 @@ export function FloatingNav() {
                 variant="ghost"
                 size="icon"
                 className="text-zinc-400 hover:text-white hover:bg-zinc-700/50"
+                aria-expanded={isOpen}
+                aria-controls="mobile-nav"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {isOpen ? (
@@ -107,12 +106,13 @@ export function FloatingNav() {
       {/* Mobile menu */}
       {isMobile && (
         <motion.div
+          id="mobile-nav"
           className={`fixed inset-0 z-40 bg-black/90 backdrop-blur-md ${isOpen ? "block" : "hidden"}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex flex-col items-center justify-center h-full">
+          <div className="flex flex-col items-center justify-center h-full px-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}

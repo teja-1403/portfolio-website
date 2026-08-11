@@ -60,7 +60,7 @@ export default function Portfolio() {
       <FloatingNav />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative md:min-h-screen flex items-center justify-center overflow-hidden md:pb-0 pb-20">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
           <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -75,13 +75,13 @@ export default function Portfolio() {
                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 animate-pulse"></span>
               </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
               <span className="block">Hi, I'm</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
                 Sai Teja
               </span>
             </h1>
-            <p className="text-xl text-zinc-400 max-w-[600px]">
+            <p className="text-xl text-zinc-400 max-w-full sm:max-w-[600px]">
               I build scalable, enterprise-grade web applications with React and
               Spring Boot.
             </p>
@@ -106,7 +106,7 @@ export default function Portfolio() {
                 <Link href="#contact">Contact Me</Link>
               </Button>
             </div>
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <Link
                 href="https://www.linkedin.com/in/saiteja1403/"
                 target="_blank"
@@ -180,7 +180,7 @@ export default function Portfolio() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute left-1/2 -translate-x-1/2 animate-bounce md:bottom-10 bottom-2">
           <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center items-start p-1">
             <div className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse"></div>
           </div>
