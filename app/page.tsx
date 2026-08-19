@@ -440,7 +440,7 @@ export default function Portfolio() {
               ]}
               image="/images/project0.png"
               demoUrl="https://digital-banking-platform-live.vercel.app/"
-              repoUrl="https://github.com/teja-1403/banking-platform"
+              repoUrl="https://github.com/teja-1403/digital-banking-platform"
             />
             <ProjectCard
               title="Personal Portfolio Website"
