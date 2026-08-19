@@ -427,11 +427,27 @@ export default function Portfolio() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             <ProjectCard
+              title="Digital Banking Platform"
+              description="Full-stack microservices banking platform built with Spring Boot, React, and PostgreSQL."
+              tags={[
+                "Java",
+                "Spring Boot",
+                "React",
+                "TypeScript",
+                "PostgreSQL",
+                "Microservices",
+                "JWT Authentication",
+              ]}
+              image="/images/project0.png"
+              demoUrl="https://digital-banking-platform-live.vercel.app/"
+              repoUrl="https://github.com/teja-1403/banking-platform"
+            />
+            <ProjectCard
               title="Personal Portfolio Website"
               description="A responsive developer portfolio showcasing my skills, projects, experience, and learning journey."
               tags={["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"]}
               image="/images/project1.png"
-              demoUrl="https://github.com/teja-1403/portfolio-website"
+              demoUrl="https://tbvsaiteja.vercel.app/"
               repoUrl="https://github.com/teja-1403/portfolio-website"
             />
             <ProjectCard
